@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tus.group_project.dao.UserRepository;
-import com.tus.group_project.dto.UserDto;
-import com.tus.group_project.dto.UserRegistrationDto;
-import com.tus.group_project.dto.UserRegistrationResponse;
-import com.tus.group_project.mapper.UserMapper;
-import com.tus.group_project.model.User;
+import com.tus.individual.dao.UserRepository;
+import com.tus.individual.dto.UserDto;
+import com.tus.individual.dto.UserRegistrationDto;
+import com.tus.individual.dto.UserRegistrationResponse;
+import com.tus.individual.mapper.UserMapper;
+import com.tus.individual.model.User;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

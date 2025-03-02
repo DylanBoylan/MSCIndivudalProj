@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>NetWorks</title>
+  
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/images/favicon.ico">
+
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+	<!-- Custom Styles -->
+	<link rel="stylesheet" href="/styles.css" />
+
+ 	<!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <!-- jQuery (necessary for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  
+	<!-- Our own supporting scripts -->
+	<script src="/js/auth-api.js"></script>
+</head>
+<body class="wrapper d-flex flex-column min-vh-100 w-100">
+	<nav id="sidebar" class="bg-dark d-flex flex-column p-3" style="display: none;">
+	    <ul class="nav flex-column fs-5">
+	    	<li class="nav-item" id="homeNav">
+	            <a class="nav-link text-white" href="#home" data-page>🏠 Home</a>
+	        </li>
+	        <li class="nav-item" id="fileUploadNav" style="display: none;">
+	            <a class="nav-link text-white" href="#file-upload" data-page>📂 Upload File</a>
+	        </li>
+	        <li class="nav-item" id="registerNav" style="display: none;">
+	            <a class="nav-link text-white" href="#register" data-page>📝 Register</a>
+	        </li>
+			<li class="nav-item" id="accountsNav" style="display: none;">
+	            <a class="nav-link text-white" href="#accounts" data-page>🗂️ Accounts</a>
+	        </li>
+	        <li class="nav-item" id="byimsisNav" style="display: none;">
+	            <a class="nav-link text-white" href="#by-imsi" data-page>🔍 Search by IMSI</a>
+	        </li>
+			<li class="nav-item" id="imsisNav" style="display: none;">
+	            <a class="nav-link text-white" href="#imsis" data-page>📡 IMSI Search</a>
+	        </li>
+	        <li class="nav-item" id="failuresNav" style="display: none;">
+	            <a class="nav-link text-white" href="#failures" data-page>📊 Call Failures</a>
+	        </li>
+	        <li class="nav-item" id="countByImsiNav" style="display: none;">
+	    		<a class="nav-link text-white" href="#count-by-imsi" data-page>🔢 Count By IMSI</a>
+			</li>
+			<li class="nav-item" id="summaryNav" style="display: none;">
+	            <a class="nav-link text-white" href="#failure-summary" data-page>📋 Failure Summary</a>
+	        </li>
+	        <li class="nav-item" id="byimsitimeNav" style="display: none;">
+	            <a class="nav-link text-white" href="#failures-by-imsitime" data-page>📊 Call Failures By IMSI & Time</a>
+	        </li>
+	        <li class="nav-item" id="top10operatorsNav" style="display: none;">
+            	<a class="nav-link text-white" href="#top10Operators" data-page>📊 Top10 Operators</a>
+        	</li>
+        	<li class="nav-item" id="top10imsisNav" style="display: none;">
+   				 <a class="nav-link text-white" href="#top10Imsis" data-page>📊 Top10 IMSIs</a>
+			</li>
+        	
+	    </ul>
+	</nav>
+	<script src="/js/sidebar.js"></script>
+</body>
+</html>

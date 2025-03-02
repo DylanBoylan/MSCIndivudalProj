@@ -1,0 +1,245 @@
+/* General Page Layout */
+body, html {
+    height: 100%;
+    margin: 0;
+	padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark mode */
+    color: white;
+	display: flex;
+}
+
+/* Flex container for sidebar and content */
+.wrapper {
+    display: flex;
+	width: 100%;
+	flex-direction: column;
+	min-height: 100vh; 
+}
+
+.d-flex.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+ 
+}
+
+/* Sidebar Links */
+#sidebar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    transition: background 0.3s;
+}
+
+#sidebar a:hover {
+    background: #333;
+}
+
+.nav-link.active {
+    background-color: #333;
+    font-weight: bold;
+}
+
+/* Main Content */
+#main-content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+#content {
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+/* Form Styling */
+.form-container {
+    max-width: 800px;
+    margin: auto;
+	margin-bottom: 10px !important;
+    padding: 40px;
+    background: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Form Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 4px;
+    background: #333;
+    color: white;
+}
+
+/* Form Buttons */
+button {
+	font-size: 1.10rem;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+	background-color: #3495d6;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Style the logout container to look like a button */
+#logoutContainer {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Change background on hover */
+#logoutContainer:hover {
+  background: #333;
+}
+
+/* Ensure the logout link inherits the container's pointer cursor and doesn't have extra padding/margin */
+#logoutContainer a {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Left section: welcome message background and padding */
+.welcome-bg {
+  min-height: calc(100vh - 24px);
+  background-color: #1e1e1e;
+}
+
+/* Right section: login background covering the entire half */
+.login-bg {
+  min-height: calc(100vh - 24px);
+  background: url('/images/login-bg.png') repeat;
+  background-size: auto;
+  background-blend-mode: normal;
+}
+
+/* Login card styling to limit the width */
+.login-card {
+  max-width: 500px;
+  width: 100%;
+  min-height: 500px;
+  padding: 2;
+}
+
+/* Wrapper for the logo image with its own background for contrast */
+.logo-wrapper {
+  background-color: #333;
+  padding: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#footer {
+    margin-top: auto;
+	padding: 0;
+}
+
+
+label {
+	font-size: 1.25rem;
+    text-align: left;
+    display: block;
+}
+
+/*Spinner Color*/
+.spinner-border {
+  color: #3495d6 !important;
+}
+
+/* EditUserModal styling */
+#editUserModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Query Table Styling */
+.table-container {
+       max-height: 600px;
+       overflow-y: auto;
+       overflow-x: auto;
+       border: 1px solid #ddd;
+       padding: 10px;
+   }
+
+.sorting {
+	align-items: center;
+	color: white;
+}
+
+#failuresTable {       
+	width: 100%;
+    table-layout: fixed;
+}
+
+#failuresTable th, #failuresTable td {
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dataTables_filter {
+  float: left !important;
+  text-align: left !important;
+  padding-bottom: 10px;
+}
+
+
+.dataTables_filter input {
+  color: white !important;
+  background-color: #121212;
+  border: 1px solid #333; 
+  width: 200px !important;      
+  padding: 4px 6px !important;    
+  font-size: 1rem !important;  
+  height: auto; 
+}
+
+
+.dataTables_filter label {
+  color: white !important;
+}

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tus.group_project.dto.FileUploadResponse;
-import com.tus.group_project.exception.FileFormatException;
-import com.tus.group_project.exception.FileStorageException;
-import com.tus.group_project.model.FileProcessingResult;
-import com.tus.group_project.service.IFileProcessorService;
+import com.tus.individual.dto.FileUploadResponse;
+import com.tus.individual.exception.FileFormatException;
+import com.tus.individual.exception.FileStorageException;
+import com.tus.individual.model.FileProcessingResult;
+import com.tus.individual.service.IFileProcessorService;
 
 
 @RestController

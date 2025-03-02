@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.tus.group_project.model.CallFailure;
-import com.tus.group_project.service.ICallFailureService;
+import com.tus.individual.model.CallFailure;
+import com.tus.individual.service.ICallFailureService;
 
 @RestController
 @RequestMapping("/api/call-failures")

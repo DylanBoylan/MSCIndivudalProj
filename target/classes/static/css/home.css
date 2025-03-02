@@ -1,0 +1,60 @@
+body {
+    background-color: #121212; /* Dark mode */
+    color: white;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.card {
+    max-width: 500px;
+    margin: 0px auto;
+    border-radius: 10px;
+    text-align: center;
+	align-items: center;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+	padding: 0 !important;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.emoji-box {
+    background-color: rgba(0, 0, 0, 0.3); /* Darker background for the emoji box */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0 0 10px; /* Rounded corners on the left */
+    width: 100px; /* Width of the emoji box */
+    height: 100%; /* Ensure the emoji box takes full height */
+	margin : 0 !important;
+}
+
+.emoji {
+    font-size: 4rem; /* Adjust size of the emoji */
+    color: white;
+}
+
+.text-box {
+    width: 100%; /* Text box takes the remaining space */
+	padding-right: 15px;
+	padding-top: 15px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.display-6 {
+    font-size: 1.5rem;
+}
+
+p.lead {
+    font-size: 1.2rem;
+}

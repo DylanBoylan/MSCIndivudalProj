@@ -4,11 +4,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import com.tus.group_project.dto.UserLoginDto;
-import com.tus.group_project.dto.UserLoginResponse;
-import com.tus.group_project.exception.InvalidCredentialsException;
-import com.tus.group_project.service.IAuthService;
-import com.tus.group_project.service.IJwtService;
+import com.tus.individual.dto.UserLoginDto;
+import com.tus.individual.dto.UserLoginResponse;
+import com.tus.individual.exception.InvalidCredentialsException;
+import com.tus.individual.service.IAuthService;
+import com.tus.individual.service.IJwtService;
 
 import jakarta.validation.Valid;
 
