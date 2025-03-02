@@ -6,12 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tus.individual.dao.CallFailureRepository;
 import com.tus.individual.service.ICallFailureService;
 
 @Service
 public class CallFailureService implements ICallFailureService {
-    
+    /*
 	private CallFailureRepository callFailureRepository;
     
     @Autowired
@@ -55,5 +54,5 @@ public class CallFailureService implements ICallFailureService {
 	public List<Object[]> getTop10ImsisWithFailures(LocalDateTime startDate, LocalDateTime endDate) {
 	    return callFailureRepository.findTop10ImsisByFailureCount(startDate, endDate);
 	}
-
+*/
 }
