@@ -54,6 +54,10 @@
 		        $.ajax({
 		            url: "/api/teams", // Ensure this matches your backend endpoint
 		            type: "GET",
+		            headers: {
+		                "Authorization": `Bearer ${AuthAPI.getToken()}`,  // ✅ Add this line
+		                "Content-Type": "application/json"
+		            },
 		            success: function (response) {
 		                $('#tableWrapper').show(); // Show table when data is fetched
 		                table.clear().draw(); // Clear previous results

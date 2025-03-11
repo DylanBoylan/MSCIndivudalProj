@@ -3,6 +3,7 @@ package com.tus.individual.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.tus.individual.service.IQueryControllerService;
@@ -23,28 +24,29 @@ public class SeasonAnalyzerController {
         this.openAiService = openAiService;
     }
 
+    @PreAuthorize("hasRole('COACH')")
     @GetMapping("/analyze")
     public ResponseEntity<Map<String, Object>> analyzeSeason(
             @RequestParam String teamName, @RequestParam String analysisType) {
-        
+
+        // ✅ First, check if analysisType is valid before making database queries
+        if (!analysisType.equals("General Season") && !analysisType.equals("Players")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Invalid analysis type."));
+        }
+
         Integer gamesWon = queryControllerService.getTotalGamesWon(teamName);
-        
+
         if (gamesWon == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "No data found for this team."));
         }
 
-        String aiPrompt;
-        if ("General Season".equals(analysisType)) {
-            aiPrompt = createSeasonAnalysisPrompt(teamName, gamesWon);
-        } else if ("Players".equals(analysisType)) {
-            aiPrompt = createPlayerAnalysisPrompt(teamName, gamesWon);
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Invalid analysis type."));
-        }
+        String aiPrompt = (analysisType.equals("General Season"))
+                ? createSeasonAnalysisPrompt(teamName, gamesWon)
+                : createPlayerAnalysisPrompt(teamName, gamesWon);
 
-        System.out.println("📡 AI Prompt Sent: " + aiPrompt); // ✅ Debugging AI prompt
+        System.out.println("📡 AI Prompt Sent: " + aiPrompt);
 
-        String aiReport = openAiService.getTrainingPlan(aiPrompt); // Sends the prompt to OpenAI
+        String aiReport = openAiService.getTrainingPlan(aiPrompt);
 
         Map<String, Object> response = new HashMap<>();
         response.put("teamName", teamName);
@@ -53,6 +55,7 @@ public class SeasonAnalyzerController {
 
         return ResponseEntity.ok(response);
     }
+
 
 
     // ✅ Creates AI prompt for General Season Performance

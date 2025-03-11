@@ -1,3 +1,4 @@
+
 package com.tus.individual.dto;
 
 import jakarta.validation.constraints.Email;

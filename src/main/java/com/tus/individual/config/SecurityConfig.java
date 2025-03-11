@@ -2,6 +2,10 @@ package com.tus.individual.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
+import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -20,6 +24,23 @@ public class SecurityConfig {
     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
+    
+    @Bean
+    static RoleHierarchy roleHierarchy() {
+        return RoleHierarchyImpl.withDefaultRolePrefix()
+            .role("MANAGER").implies("COACH")
+            .role("COACH").implies("ANALYST")
+            .build();
+    }
+
+    // and, if using pre-post method security also add
+    @Bean
+    static MethodSecurityExpressionHandler methodSecurityExpressionHandler(RoleHierarchy roleHierarchy) {
+    	DefaultMethodSecurityExpressionHandler expressionHandler = new DefaultMethodSecurityExpressionHandler();
+    	expressionHandler.setRoleHierarchy(roleHierarchy);
+    	return expressionHandler;
+    }
+    
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -47,15 +68,6 @@ public class SecurityConfig {
                 		"/styles.css"
                 ).permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
-                .requestMatchers("/api/actions").permitAll()
-                .requestMatchers("/api/matches").permitAll()
-                .requestMatchers("/api/players").permitAll()
-                .requestMatchers("/api/teams").permitAll()
-                .requestMatchers("/api/teams/goals").permitAll()
-                .requestMatchers("/api/teams/points").permitAll()
-                .requestMatchers("/api/season/**").permitAll()
-                .requestMatchers("/api/players/team").permitAll()
-                
                 .anyRequest().authenticated()
                 
             )

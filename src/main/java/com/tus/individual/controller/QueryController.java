@@ -34,6 +34,7 @@ public class QueryController {
         this.queryControllerService = queryControllerService;
     }
     
+    @PreAuthorize("hasAnyRole('ADMIN', 'ANALYST', 'COACH')")
     @GetMapping("/matches")
     public ResponseEntity<Map<String, Object>> getAllMatches() {
         List<Match> matches = queryControllerService.getAllMatches();
@@ -44,7 +45,8 @@ public class QueryController {
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
+    
+    @PreAuthorize("hasAnyRole('ADMIN', 'ANALYST', 'COACH')")
     @GetMapping("/actions")
     public ResponseEntity<Map<String, Object>> getAllActions() {
         try {
@@ -59,6 +61,8 @@ public class QueryController {
                     .body(Map.of("error", "Failed to fetch actions", "message", e.getMessage()));
         }
     }
+    
+    @PreAuthorize("hasAnyRole('ADMIN', 'ANALYST', 'COACH')")
     @GetMapping("/teams")
     public ResponseEntity<Map<String, Object>> getAllTeams() {
         List<Team> teams = queryControllerService.getAllTeams();
@@ -70,6 +74,7 @@ public class QueryController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'ANALYST', 'COACH')")
     @GetMapping("/players")
     public ResponseEntity<Map<String, Object>> getAllPlayers() {
         List<Player> players = queryControllerService.getAllPlayers();
@@ -81,6 +86,7 @@ public class QueryController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     
+    @PreAuthorize("hasRole('ANALYST')")
     @GetMapping("/teams/goals")
     public ResponseEntity<Map<String, Object>> getTotalGoalsByTeam() {
         List<Object[]> results = queryControllerService.getTotalGoalsByTeam(); // Fetch query results
@@ -100,7 +106,8 @@ public class QueryController {
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
+    
+    @PreAuthorize("hasRole('ANALYST')")
     @GetMapping("/teams/points")
     public ResponseEntity<Map<String, Object>> getTotalPointsByTeam() {
         List<Object[]> results = queryControllerService.getTotalPointsByTeam();
@@ -120,7 +127,8 @@ public class QueryController {
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
+    
+    @PreAuthorize("hasRole('ANALYST')")
     @GetMapping("/teams/names")
     public ResponseEntity<Map<String, Object>> getAllTeamNames() {
         List<String> teamNames = queryControllerService.getAllTeamNames(); // Fetch only names
@@ -139,6 +147,7 @@ public class QueryController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     
+    @PreAuthorize("hasRole('ANALYST')")
     @GetMapping("/matches/results")
     public ResponseEntity<Map<String, Object>> getMatchResults() {
         List<Object[]> results = queryControllerService.getMatchResults();
@@ -160,6 +169,7 @@ public class QueryController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     
+    @PreAuthorize("hasRole('ANALYST')")
     @GetMapping("/players/team")
     public ResponseEntity<Map<String, Object>> getAverageStatsByTeam(@RequestParam String teamName) {
         List<Object[]> results = queryControllerService.getPlayersByTeamName(teamName);

@@ -13,7 +13,6 @@ $(document).ready(function () {
 		$("#homeNav").show(); // Home is always visible
 
 		if (role === "ADMINISTRATOR") {
-			$("#fileUploadNav").show();
 			$("#registerNav").show();
 			$("#accountsNav").show();
 		} else {
@@ -28,7 +27,7 @@ $(document).ready(function () {
 					$("#getActionsNav").show();
 					$("#getPlayersNav").show();
 					$("#getTeamsNav").show();
-					$("#showMatches").show();
+					$("#showMatchesNav").show();
 					$("#showPlayerStatsNav").show();
 					$("#goalsGraphNav").show();
 					$("#pointsGraphNav").show();
@@ -41,7 +40,7 @@ $(document).ready(function () {
 
 	// Hide all items initially
 	function hideAll() {
-		$("#homeNav, #fileUploadNav, #registerNav, #accountsNav, #getMatchesNav, #getActionsNav, #getPlayersNav, #getTeamsNav, #goalsGraphNav, #pointsGraphNav, #nextSessionNav, #playerTrainingNav, #seasonAnalyzerNav").hide();
+		$("#homeNav, #registerNav, #accountsNav, #getMatchesNav, #getActionsNav, #getPlayersNav, #getTeamsNav, #showMatchesNav, #showPlayerStatsNav, #goalsGraphNav, #pointsGraphNav, #nextSessionNav, #playerTrainingNav, #seasonAnalyzerNav").hide();
 	}
 
 	// ✅ Fix: Redirect to `/#login` instead of `/login.html`

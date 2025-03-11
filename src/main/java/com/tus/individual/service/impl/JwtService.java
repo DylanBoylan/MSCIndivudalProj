@@ -95,7 +95,7 @@ public class JwtService implements IJwtService {
     /**
      * Get the signing key used for signing JWTs
      */
-    private Key getSigningKey() {
+    protected Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }

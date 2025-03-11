@@ -129,7 +129,7 @@ $(document).ready(function () {
 	
 	// Delete User
 	function deleteUser(email) {
-	    const protectedEmail = "admin@networksys.com"; // Hardcoded user that cannot be deleted
+	    const protectedEmail = "admin@admin.com"; // Hardcoded user that cannot be deleted
 	
 	    if (email === protectedEmail) {
 	        alert("❌ This user cannot be deleted!");
