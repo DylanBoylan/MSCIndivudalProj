@@ -1,51 +1,73 @@
 package com.tus.individual.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "Actions", schema = "PremierLeague")
-public class Action {
+@Table(name = "actions", schema = "individual_project")
+@IdClass(ActionId.class) // ✅ Use Composite Key Class
+public class Action implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(nullable = false)
+    @Column(name = "PlayerID") // ✅ Match database column name
     private Integer playerId;
-    
-    @Column(nullable = false)
+
+    @Id
+    @Column(name = "MatchID") // ✅ Match database column name
     private Integer matchId;
-    
-    @Column(nullable = false)
+
+    @Column(name = "TeamID")
     private Integer teamId;
-    
+
+    @Column(name = "FirstGoal")
     private Integer firstGoal;
+
+    @Column(name = "WinningGoal")
     private Integer winningGoal;
+
+    @Column(name = "ShotsOnTargetincgoals")
     private Integer shotsOnTarget;
+
+    @Column(name = "SavesMade")
     private Integer savesMade;
+
+    @Column(name = "TimePlayed")
     private Integer timePlayed;
+
+    @Column(name = "PositionID")
     private Integer positionId;
+
+    @Column(name = "Starts")
     private Integer starts;
+
+    @Column(name = "SubstituteOn")
     private Integer substituteOn;
+
+    @Column(name = "SubstituteOff")
     private Integer substituteOff;
+
+    @Column(name = "Goals")
     private Integer goals;
-    
+
+    @Column(name = "Team1")
     private String team1;
+
+    @Column(name = "Team2")
     private String team2;
-    
-    private Long shotEfficiency;
-    private Long passesEfficiency;
-    private Long tackleEfficiency;
-    private Long dribbleEfficiency;
-    
-    // Getters and Setters
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "shot_eff")
+    private Double shotEfficiency;
 
+    @Column(name = "passes_eff")
+    private Double passesEfficiency;
+
+    @Column(name = "tackle_eff")
+    private Double tackleEfficiency;
+
+    @Column(name = "dribble_eff")
+    private Double dribbleEfficiency;
+
+    // ✅ Getters and Setters
     public Integer getPlayerId() {
         return playerId;
     }
@@ -58,7 +80,7 @@ public class Action {
         return matchId;
     }
 
-    public void setMatchId(int matchId) {
+    public void setMatchId(Integer matchId) {
         this.matchId = matchId;
     }
 
@@ -66,10 +88,10 @@ public class Action {
         return teamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         this.teamId = teamId;
     }
-    
+
     public Integer getFirstGoal() {
         return firstGoal;
     }
@@ -166,35 +188,35 @@ public class Action {
         this.team2 = team2;
     }
 
-    public Long getShotEfficiency() {
+    public Double getShotEfficiency() {
         return shotEfficiency;
     }
 
-    public void setShotEfficiency(Long long1) {
-        this.shotEfficiency = long1;
+    public void setShotEfficiency(Double shotEfficiency) {
+        this.shotEfficiency = shotEfficiency;
     }
 
-    public Long getPassesEfficiency() {
+    public Double getPassesEfficiency() {
         return passesEfficiency;
     }
 
-    public void setPassesEfficiency(Long passesEfficiency) {
+    public void setPassesEfficiency(Double passesEfficiency) {
         this.passesEfficiency = passesEfficiency;
     }
 
-    public Long getTackleEfficiency() {
+    public Double getTackleEfficiency() {
         return tackleEfficiency;
     }
 
-    public void setTackleEfficiency(Long tackleEfficiency) {
+    public void setTackleEfficiency(Double tackleEfficiency) {
         this.tackleEfficiency = tackleEfficiency;
     }
 
-    public Long getDribbleEfficiency() {
+    public Double getDribbleEfficiency() {
         return dribbleEfficiency;
     }
 
-    public void setDribbleEfficiency(Long dribbleEfficiency) {
+    public void setDribbleEfficiency(Double dribbleEfficiency) {
         this.dribbleEfficiency = dribbleEfficiency;
     }
 }

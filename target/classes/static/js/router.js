@@ -3,17 +3,19 @@ const Router = {
 	paths: {
 		"login": "/components/login.html",
 		"home": "/components/home.html", // Homepage
-		"file-upload": "/admin/components/file-upload.html", // File Upload page
-		"register": "/admin/components/register.html", // Registration page
-		"accounts": "/admin/components/accounts.html", // Accounts management page
-		"by-imsi": "/customer-service/components/by-imsis.html", // By IMSIs page
-		"imsis": "/support-engineer/components/imsis.html", // File Upload page
-		"failures": "/support-engineer/components/failures.html", // Failures page
-		"count-by-imsi": "/network-management-engineer/components/count-by-imsi.html",
-		"failure-summary": "/network-management-engineer/components/failure-summary.html",
-		"failures-by-imsitime": "/customer-service/components/failures-by-imsitime.html",
-		"top10Operators": "/network-management-engineer/components/top-10-operators.html",
-		"top10Imsis": "/network-management-engineer/components/top-10-imsis.html"
+		"file-upload": "/admin/components/file-upload.html",
+		"register": "/admin/components/register.html",
+		"accounts": "/admin/components/accounts.html",
+		"getMatches": "/analyst/components/getMatches.html",
+		"getPlayers": "/analyst/components/getPlayers.html", 
+		"getTeams": "/analyst/components/getTeams.html", 
+		"getActions": "/analyst/components/getActions.html",
+		"goalsGraph": "/analyst/components/goalsGraph.html",
+		"pointsGraph": "/analyst/components/pointsGraph.html",
+		"nextSession": "/coach/components/nextSession.html",
+		"showMatches": "/analyst/components/showMatches.html",
+		"showPlayerStats": "/analyst/components/showPlayerStats.html",
+		"seasonAnalyzer": "/coach/components/seasonAnalyzer.html"
 	},
 	
 	init: function () {

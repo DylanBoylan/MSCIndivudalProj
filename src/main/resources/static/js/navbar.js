@@ -1,23 +1,61 @@
-// js/components/navbar.js
 $(document).ready(function () {
-	// Always load the navbar
+	// Load the navbar options only if the user is authenticated.
 	if (AuthAPI.isLoggedIn()) {
-		const userName = AuthAPI.getUsername() || "User";
-		$("#loggedUserName").text(userName);
-	    // Unhide the authentication info on the right.
-	    $("#welcomeText").removeClass("d-none");
-	    $("#logoutButton").removeClass("d-none");
+    	updateNavbar();
 	} else {
-	    // Ensure that if not authenticated, the auth info remains hidden.
-	    $("#welcomeText").addClass("d-none");
-	    $("#logoutButton").addClass("d-none");
+		$("#navbarNav").hide();
 	}
-	
-	// Remove previous listener before adding new one -- avoids duplication
-	$(document).off("click", "#logoutButton").on("click", "#logoutButton", function () {   
-		AuthAPI.removeToken();
-		alert("✅ Logged out!"); 
-		location.reload(); // Refresh to update navbar
+
+	// Update the navbar so that only specific roles see their options.
+	function updateNavbar() {
+		hideAll(); // Hide all menu items first
+		let role = AuthAPI.getUserRole();
+		$("#homeNav").show(); // Home is always visible
+
+		if (role === "ADMINISTRATOR") {
+			$("#fileUploadNav").show();
+			$("#registerNav").show();
+			$("#accountsNav").show();
+		} else {
+			switch (role) {
+				case "COACH":
+					$("#nextSessionNav").show();
+					$("#playerTrainingNav").show();
+					$("#seasonAnalyzerNav").show();
+					// Fall through to Analyst permissions
+				case "ANALYST":
+					$("#getMatchesNav").show();
+					$("#getActionsNav").show();
+					$("#getPlayersNav").show();
+					$("#getTeamsNav").show();
+					$("#showMatches").show();
+					$("#showPlayerStatsNav").show();
+					$("#goalsGraphNav").show();
+					$("#pointsGraphNav").show();
+					break;
+				default:
+					console.warn("Unknown role:", role);
+			}
+		}
+	}
+
+	// Hide all items initially
+	function hideAll() {
+		$("#homeNav, #fileUploadNav, #registerNav, #accountsNav, #getMatchesNav, #getActionsNav, #getPlayersNav, #getTeamsNav, #goalsGraphNav, #pointsGraphNav, #nextSessionNav, #playerTrainingNav, #seasonAnalyzerNav").hide();
+	}
+
+	// ✅ Fix: Redirect to `/#login` instead of `/login.html`
+	$("#logoutButton").click(function (event) {
+		event.preventDefault(); // Prevent default <a> behavior
+
+		// ✅ Clear authentication tokens/session
+		if (typeof AuthAPI.logout === "function") {
+			AuthAPI.logout(); // Call your logout function
+		}
+		window.localStorage.clear(); // Clear local storage
+		document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // Clear cookies
+
+		// ✅ Redirect to `/#login`
+		window.location.href = "/#login"; 
 	});
 });
-	

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>VARify - Match Results</title>
+  
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/images/VarifyLogo.JPG">
+
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+	<!-- Custom Styles -->
+	<link rel="stylesheet" href="/styles.css" />
+
+ 	<!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <!-- jQuery (necessary for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  
+	<!-- Our own supporting scripts -->
+	<script src="/js/auth-api.js"></script>
+</head>
+<body class="wrapper d-flex flex-column min-vh-100 w-100" style="background: url('/images/soccer_stadium.jpg') center/cover no-repeat;">
+	<div class="container mt-5 form-container bg-dark text-white shadow-lg p-4 rounded text-center">	
+		<h2 class="bg-success p-3 rounded">⚽ Retrieve Match Results</h2>
+		<br>
+		<button id="fetchMatches" class="btn btn-success btn-lg">Fetch Matches</button>
+
+		<!-- Scrollable Table Container (Initially Hidden) -->
+		<div id="tableWrapper" class="mt-4" style="display: none;">
+		    <table id="matchesTable" class="table table-striped table-dark">
+		        <thead class="bg-success text-white">
+		            <tr>
+		                <th>Match ID</th>
+		                <th>Home Team</th>
+		                <th>Away Team</th>
+		                <th>Home Formation</th>
+		                <th>Away Formation</th>
+		                <th>Result</th>
+		                <th>Date</th>
+		            </tr>
+		        </thead>
+		        <tbody></tbody>
+		    </table>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+		    var table = $('#matchesTable').DataTable(); // Initialize DataTable
+
+		    $('#fetchMatches').click(function () {
+		        $.ajax({
+		            url: "/api/matches", // Ensure this matches your backend endpoint
+		            type: "GET",
+		            success: function (response) {
+		                $('#tableWrapper').show(); // Show table when data is fetched
+		                table.clear().draw(); // Clear previous results
+		                response.matches.forEach(function (match) {
+		                    table.row.add([
+		                        match.matchId,
+		                        match.teamHomeID, // Replace with actual team name if needed
+		                        match.teamAwayID, // Replace with actual team name if needed
+		                        match.teamHomeFormation,
+		                        match.teamAwayFormation,
+		                        match.resultOfTeamHome,
+		                        match.date
+		                    ]).draw(false);
+		                });
+		            },
+		            error: function () {
+		                alert("Error fetching match data. Please try again.");
+		            }
+		        });
+		    });
+		});
+	</script>
+</body>
+</html>

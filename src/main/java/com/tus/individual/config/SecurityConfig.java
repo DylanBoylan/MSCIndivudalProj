@@ -37,17 +37,27 @@ public class SecurityConfig {
                 		"/admin/**",
                 		"/components/**",
                 		"/css/**",
-                		"/customer-service/**",
+                		"/analyst/**",
                 		"/images/**",
                 		"/js/**",
-                		"/network-management-engineer/**",
-                		"/support-engineer/**",
+                		"/manager/**",
+                		"/coach/**",
                 		"/index.html",
                 		"/main.js",
                 		"/styles.css"
                 ).permitAll()
                 .requestMatchers("/api/auth/login").permitAll()
+                .requestMatchers("/api/actions").permitAll()
+                .requestMatchers("/api/matches").permitAll()
+                .requestMatchers("/api/players").permitAll()
+                .requestMatchers("/api/teams").permitAll()
+                .requestMatchers("/api/teams/goals").permitAll()
+                .requestMatchers("/api/teams/points").permitAll()
+                .requestMatchers("/api/season/**").permitAll()
+                .requestMatchers("/api/players/team").permitAll()
+                
                 .anyRequest().authenticated()
+                
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

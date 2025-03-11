@@ -1,56 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>NetWorks</title>
-  
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="/images/favicon.ico">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VARify</title>
 
-	<!-- Bootstrap CDN -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="/images/VarifyLogo.JPG">
 
-	<!-- Custom Styles -->
-	<link rel="stylesheet" href="/styles.css" />
+<!-- Bootstrap CDN -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
 
- 	<!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<!-- Custom Styles -->
+<link rel="stylesheet" href="/styles.css" />
 
-    <!-- jQuery (necessary for DataTables) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-  
-	<!-- Our own supporting scripts -->
-	<script src="/js/auth-api.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body class="wrapper d-flex flex-column min-vh-100 w-100">		
-	<!-- /components/navbar.html -->
+<body>
+	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid d-flex align-items-center">
-			<!-- Left side: Logo and Company name -->
-	    	<div class="d-flex align-items-center">
-	    		<span style="background-color: #333; padding: 5px; border-radius: 50%; display: inline-block;">
-	        		<img src="/images/NetWorks_Logo.png" alt="Company Logo" width="30" height="30" class="rounded-circle align-middle">
-	      		</span>
-	      		<h4 class="mx-2 mb-0">NetWorks</h4>
-	    	</div>
-	    	<!-- Right side: Authentication info (hidden by default) -->
-	    	<div class="d-flex ms-auto align-items-center" id="authInfo">
-	      		<span id="welcomeText" class="mx-2 d-none">
-	        		<h4 class="mb-0">Hello, <span id="loggedUserName"></span></h4>
-	      		</span>
-		      	<div id="logoutContainer">
-	        		<a href="#" class="nav-link text-danger mx-2 d-none" id="logoutButton">
-	          			<h4 class="mb-0">🚪 Logout</h4>
-	        		</a>
-	      		</div>
-	    	</div>
+		<div class="container-fluid">
+			<!-- Logo & Brand Name -->
+			<a class="navbar-brand" href="#"> <img
+				src="/images/VarifyLogo.JPG" alt="VARify Logo" width="40"
+				height="40" class="d-inline-block align-middle"> VARify
+			</a>
+
+			<!-- Navbar Toggle Button for Mobile -->
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Navbar Links -->
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item" id="homeNav"><a class="nav-link"
+						href="#home" data-page>🏠 Home</a></li>
+					<li class="nav-item" id="fileUploadNav" style="display: none;">
+						<a class="nav-link" href="#fileUpload" data-page>📂 Upload
+							File</a>
+					</li>
+					<li class="nav-item" id="registerNav" style="display: none;">
+						<a class="nav-link" href="#register" data-page>📝 Register</a>
+					</li>
+					<li class="nav-item" id="accountsNav" style="display: none;">
+						<a class="nav-link" href="#accounts" data-page>🗂️ Accounts</a>
+					</li>
+					<li class="nav-item" id="getMatchesNav" style="display: none;">
+						<a class="nav-link" href="#getMatches" data-page>🏆 Matches</a>
+					</li>
+					<li class="nav-item" id="getPlayersNav" style="display: none;">
+						<a class="nav-link" href="#getPlayers" data-page>👕 Players</a>
+					</li>
+					<li class="nav-item" id="getTeamsNav" style="display: none;">
+						<a class="nav-link" href="#getTeams" data-page>⚽ Teams</a>
+					</li>
+					<li class="nav-item" id="getActionsNav" style="display: none;">
+						<a class="nav-link" href="#getActions" data-page>📋 Actions</a>
+					</li>
+					<li class="nav-item" id="showMatchesNav"><a class="nav-link"
+						href="#showMatches" data-page>🏆 Match Results</a></li>
+					<li class="nav-item" id="showPlayerStatsNav"><a class="nav-link"
+						href="#showPlayerStats" data-page>⚽ Player Stats</a></li>
+					<li class="nav-item" id="goalsGraphNav" style="display: none;">
+						<a class="nav-link" href="#goalsGraph" data-page>⚽ Goals Graph</a>
+					</li>
+					<li class="nav-item" id="pointsGraphNav" style="display: none;">
+						<a class="nav-link" href="#pointsGraph" data-page>📈 Points
+							Graph</a>
+					</li>
+					<li class="nav-item" id="nextSessionNav" style="display: none;">
+						<a class="nav-link" href="#nextSession" data-page>📊 Next
+							Session</a>
+					</li>
+					<li class="nav-item" id="seasonAnalyzerNav" style="display: none;">
+						<a class="nav-link" href="#seasonAnalyzer" data-page>📊 Season
+							Analyzer</a>
+					</li>
+					<li class="nav-item"><a class="nav-link text-danger" href="#"
+						id="logoutButton">🚪 Logout</a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
-	<!-- Navbar Functionality -->
-	<script src="/js/navbar.js" defer></script>
+
+	<!-- Bootstrap JavaScript Bundle (For Navbar Toggle on Mobile) -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script src="/js/navbar.js"></script>
 </body>
 </html>

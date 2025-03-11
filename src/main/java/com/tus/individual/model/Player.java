@@ -3,14 +3,16 @@ package com.tus.individual.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Player", schema = "PremierLeague")
+@Table(name = "players", schema = "individual_project")
 public class Player {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PlayerID")  // ✅ Matches MySQL column name
     private Integer playerId;
-    
-    @Column(nullable = false)
-    private String playerName;
+
+    @Column(name = "Name", nullable = false)  // ✅ Matches MySQL column name
+    private String name;
         
     // Getters and Setters
     public Integer getPlayerId() {
@@ -21,11 +23,11 @@ public class Player {
         this.playerId = playerId;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public String getName() {  // ✅ Renamed to match database
+        return name;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setName(String name) {  // ✅ Renamed to match database
+        this.name = name;
     }
 }

@@ -1,60 +1,138 @@
-body {
-    background-color: #121212; /* Dark mode */
-    color: white;
+/* Background for Welcome Section */
+.welcome-container {
+    background: linear-gradient(135deg, #145a32, #2ecc71); /* Gradient Green */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 100, 0, 0.3); /* Green shadow */
+    margin-bottom: 20px;
 }
 
+/* Styled Text */
+.welcome-container h1 {
+    color: #ffffff;
+    font-family: 'Arial Black', sans-serif;
+}
+
+.varify-text {
+    color: #d4af37; /* Gold for VARify */
+}
+
+.username-text {
+    color: #f4f4f4; /* Light Gray */
+}
+/* Ball styling */
+#bouncingBall {
+    position: fixed;
+    width: 80px; /* Increased size */
+    height: 80px;
+    background: url('/images/football.jpg') no-repeat center/cover;
+    border-radius: 50%;
+    top: 50%; /* Centers vertically */
+    left: 50%; /* Centers horizontally */
+    transform: translate(-50%, -50%); /* Adjusts for exact center */
+    z-index: 1000;
+    animation: moveAcross 5s infinite linear, bounce 2s infinite ease-in-out;
+}
+
+/* Bouncing effect */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-100px); }
+}
+
+/* Move across the screen */
+@keyframes moveAcross {
+    0% { left: 0; }
+    100% { left: 100%; }
+}
+
+.lead {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-family: 'Verdana', sans-serif;
+}
+
+.role-text {
+    color: #ffeb3b; /* Yellow */
+}
+
+.user-role-text {
+    color: #f4f4f4; /* Light Gray */
+}
+
+/* Background Fix */
+body {
+    background: url('/images/soccer_field.jpg') repeat;
+    background-size: auto; /* Prevents stretching */
+}
+
+/* Container Centering */
 .container {
     max-width: 600px;
     margin: auto;
 }
 
+/* Card Styling */
 .card {
     max-width: 500px;
-    margin: 0px auto;
+    margin: 0 auto;
     border-radius: 10px;
     text-align: center;
-	align-items: center;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-	padding: 0 !important;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9); /* Light background for readability */
+    box-shadow: 0 4px 8px rgba(0, 100, 0, 0.3); /* Green shadow for football theme */
+    padding: 15px;
 }
 
+/* Card Content Layout */
 .card-content {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
+/* Emoji Box */
 .emoji-box {
-    background-color: rgba(0, 0, 0, 0.3); /* Darker background for the emoji box */
+    background-color: rgba(39, 174, 96, 0.8); /* Bright Green */
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px 0 0 10px; /* Rounded corners on the left */
-    width: 100px; /* Width of the emoji box */
-    height: 100%; /* Ensure the emoji box takes full height */
-	margin : 0 !important;
+    border-radius: 10px 0 0 10px;
+    width: 100px;
+    height: 100%;
 }
 
+/* Emoji Styling */
 .emoji {
-    font-size: 4rem; /* Adjust size of the emoji */
-    color: white;
+    font-size: 4rem;
+    color: #145a32; /* Darker Green */
 }
 
+/* Text Box */
 .text-box {
-    width: 100%; /* Text box takes the remaining space */
-	padding-right: 15px;
-	padding-top: 15px;
+    width: 100%;
+    padding-right: 15px;
+    padding-top: 15px;
 }
 
+/* Heading Styling */
 h3 {
     margin: 0;
+    color: #196f3d !important; /* Deep Green */
+    font-family: "Arial Black", sans-serif;
 }
 
+/* Adjusted Font Sizes */
 .display-6 {
     font-size: 1.5rem;
+    color: #27ae60; /* Lighter Green */
+    font-family: "Verdana", sans-serif;
 }
 
 p.lead {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: #1d8348; /* Mid Green */
+    font-family: "Verdana", sans-serif;
 }

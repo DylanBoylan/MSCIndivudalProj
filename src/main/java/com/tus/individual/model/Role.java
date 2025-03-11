@@ -4,9 +4,9 @@ import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
     ADMINISTRATOR,
-    CUSTOMER_SERVICE,
-    SUPPORT_ENGINEER,
-    NETWORK_MANAGEMENT_ENGINEER;
+    ANALYST,
+    COACH,
+    MANAGER;
 
     @Override
     public String getAuthority() {

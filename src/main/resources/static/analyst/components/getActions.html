@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>VARify - Player Actions</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="/images/VarifyLogo.JPG">
+
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+	<!-- Custom Styles -->
+	<link rel="stylesheet" href="/styles.css" />
+
+	<!-- DataTables CSS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+	<!-- jQuery (MUST BE FIRST) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<!-- DataTables (AFTER jQuery) -->
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+	<!-- Debugging -->
+	<script>
+		console.log("✅ jQuery Version:", $.fn.jquery);
+		console.log("✅ DataTables Loaded?", $.fn.DataTable ? "Yes" : "No");
+	</script>
+
+	<!-- Our own supporting scripts -->
+	<script src="/js/auth-api.js"></script>
+	<script src="/analyst/js/getActions.js"></script>
+</head>
+<body class="wrapper d-flex flex-column min-vh-100 w-100" style="background: url('/images/soccer_field.jpg') center/cover no-repeat;">
+	<div class="container mt-5 form-container bg-dark text-white shadow-lg p-4 rounded text-center">	
+		<h2 class="bg-success p-3 rounded">⚽ Retrieve Player Actions</h2>
+		<br>
+		<button id="fetchActions" class="btn btn-success btn-lg">Fetch Actions</button>
+
+		<!-- Scrollable Table Container (Initially Hidden) -->
+		<div id="tableWrapper" class="mt-4" style="display: none;">
+		    <table id="actionsTable" class="table table-striped table-dark">
+		        <thead class="bg-success text-white">
+		            <tr>
+		                <th>Player ID</th>
+		                <th>Match ID</th>
+		                <th>Team ID</th>
+		                <th>Goals</th>
+		                <th>Shots on Target</th>
+		                <th>Pass Efficiency</th>
+		                <th>Tackle Efficiency</th>
+		                <th>Dribble Efficiency</th>
+		            </tr>
+		        </thead>
+		        <tbody></tbody>
+		    </table>
+		</div>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+		    console.log("✅ Player Actions Page Loaded!");
+
+		    // ✅ Ensure DataTables is available before using
+		    if (!$.fn.DataTable) {
+		        console.error("❌ DataTables is NOT loaded. Check script order.");
+		        return;
+		    }
+
+		    console.log("✅ Initializing DataTable...");
+		    let table = $("#actionsTable").DataTable();
+
+		    $("#fetchActions").click(function () {
+		        console.log("🔄 Fetch Actions button clicked!");
+		        fetchActions(table);
+		    });
+
+		    function fetchActions(table) {
+		        console.log("📡 Sending API request: /api/actions");
+
+		        $.ajax({
+		            url: "/api/actions",
+		            type: "GET",
+		            headers: {
+		                "Authorization": `Bearer ${AuthAPI.getToken()}`, 
+		                "Content-Type": "application/json"
+		            },
+		            success: function (response) {
+		                console.log("✅ Data received:", response);
+
+		                if (!response.actions || response.actions.length === 0) {
+		                    alert("No player actions found.");
+		                    $("#tableWrapper").hide();
+		                    return;
+		                }
+
+		                $("#tableWrapper").show();
+
+		                // ✅ Destroy previous instance before reinitializing
+		                table.clear().destroy();
+
+		                // ✅ Initialize DataTable again
+		                table = $("#actionsTable").DataTable({
+		                    destroy: true,
+		                    paging: true,
+		                    pageLength: 10,
+		                    lengthMenu: [10, 25, 50, 100],
+		                    processing: true,
+		                    deferRender: true,
+		                    scrollY: "400px",
+		                    scrollCollapse: true,
+		                    order: [[0, "desc"]],
+		                    data: response.actions,
+		                    columns: [
+		                        { data: "playerId" },
+		                        { data: "matchId" },
+		                        { data: "teamId" },
+		                        { data: "goals" },
+		                        { data: "shotsOnTarget" },
+		                        { data: "passesEfficiency" },
+		                        { data: "tackleEfficiency" },
+		                        { data: "dribbleEfficiency" }
+		                    ]
+		                });
+
+		                console.log("✅ Table updated successfully!");
+		            },
+		            error: function (xhr) {
+		                console.error("❌ Error fetching actions:", xhr);
+		                alert("❌ Failed to fetch actions. Please try again.");
+		            }
+		        });
+		    }
+		});
+	</script>
+</body>
+</html>

@@ -1,35 +1,18 @@
 <div class="container text-center mt-5">
-    <h1 class="fw-bold">👋 Welcome, <span id="userName"></span>!</h1>
-    <p class="lead text-secondary"><strong>Your role:</strong> <span id="userRole">Loading...</span></p>
-
-    <div class="card mb-4 mt-5 bg-dark text-white shadow-lg">
-        <div class="card-content">
-            <!-- Emoji Box -->
-            <div class="emoji-box mb-1">
-                <span class="emoji">🕒</span>
-            </div>
-            <!-- Text Box -->
-            <div class="text-box  mb-1">
-                <h3 class="fw-bold mb-2">Current Time:</h3>
-                <p id="currentTime" class="display-6">--:--</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="card mb-4 mt-5 bg-success text-white shadow-lg">
-        <div class="card-content">
-            <!-- Emoji Box -->
-            <div class="emoji-box mb-1">
-                <span class="emoji">✅</span>
-            </div>
-            <!-- Text Box -->
-            <div class="text-box mb-1">
-                <h3 class="fw-bold mb-2">System Status:</h3>
-                <p class="lead">All Systems Operational</p>
-            </div>
-        </div>
+    <div class="welcome-container">
+        <h1 class="fw-bold">
+            ⚽ Welcome to <span class="varify-text">VARify</span>, 
+            <span id="userName" class="username-text">Player</span>!
+        </h1>
+        <p class="lead">
+            <strong class="role-text">Your Role:</strong> 
+            <span id="userRole" class="user-role-text">Loading...</span>
+        </p>
     </div>
 </div>
+
+<!-- Bouncing Ball -->
+<div id="bouncingBall"></div>
 
 <!-- Link JavaScript -->
 <script src="/js/home.js"></script>

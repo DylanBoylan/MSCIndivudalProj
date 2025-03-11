@@ -4,30 +4,30 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Match", schema = "PremierLeague")
+@Table(name = "matches", schema = "individual_project")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MatchID")  
     private Integer matchId;
-    
-    @Column(nullable = false)
+
+    @Column(name = "TeamHomeID", nullable = false)
     private Integer teamHomeID;
-    
-    @Column(nullable = false)
+
+    @Column(name = "TeamAwayID", nullable = false)
     private Integer teamAwayID;
-    
-    @Column(nullable = false)
+
+    @Column(name = "TeamHomeFormation", nullable = false)
     private Integer teamHomeFormation;
-    
-    @Column(nullable = false)
+
+    @Column(name = "TeamAwayFormation", nullable = false)
     private Integer teamAwayFormation;
-    
-    @Column(nullable = false)
+
+    @Column(name = "ResultOfTeamHome", nullable = false)
     private Integer resultOfTeamHome;
-    
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+
+    @Column(name = "Date", nullable = false)
+    private String date;  // Change from Date to String since MySQL stores it as TEXT
     
     // Getters and Setters
     public Integer getMatchId() {
@@ -78,11 +78,11 @@ public class Match {
         this.resultOfTeamHome = resultOfTeamHome;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
