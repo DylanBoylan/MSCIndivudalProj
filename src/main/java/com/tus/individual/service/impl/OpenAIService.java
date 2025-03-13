@@ -23,7 +23,7 @@ public class OpenAIService {
     public String getTrainingPlan(String prompt) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth("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");
+        headers.setBearerAuth("x");
 
         HttpEntity<Map<String, Object>> request = new HttpEntity<>(Map.of(
             "model", "gpt-4",
