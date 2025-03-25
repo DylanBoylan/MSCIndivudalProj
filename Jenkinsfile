@@ -7,7 +7,7 @@ pipeline {
     }
  
     tools {
-        maven 'Maven 3.9'         // Match this to your Jenkins tool name
+        maven 'Maven 3.9.9'         // Match this to your Jenkins tool name
     }
  
     stages {
