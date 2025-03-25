@@ -8,7 +8,6 @@ pipeline {
  
     tools {
         maven 'Maven 3.9'         // Match this to your Jenkins tool name
-        jdk 'Temurin 17'          // Match this to your Jenkins tool name
     }
  
     stages {
