@@ -19,20 +19,20 @@ pipeline {
  
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                bat 'mvn clean install -DskipTests'
             }
         }
  
         stage('Test') {
             steps {
-               sh 'mvn test'
+               bat 'mvn test'
             }
         }
  
         stage('SonarQube Analysis') {
             steps {
                     withSonarQubeEnv("${env.SONARQUBE_ENV}") {
-                        sh """
+                        bat """
                         mvn sonar:sonar \
                           -Dsonar.projectKey=indv \
                           -Dsonar.login=${SONAR_TOKEN}
