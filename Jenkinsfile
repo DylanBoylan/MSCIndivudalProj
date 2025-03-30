@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         SONARQUBE_ENV = 'My SonarQube Server' // Set this name in Jenkins global config
+        SONAR_TOKEN = credentials('sonar-token') // Jenkins > Credentials > secret text
     }
 
     tools {
@@ -36,12 +37,11 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv("${SONARQUBE_ENV}") {
+                withSonarQubeEnv("${env.SONARQUBE_ENV}") {
                     bat """
                     mvn sonar:sonar ^
                       -Dsonar.projectKey=indv ^
-                      -Dsonar.host.url=http://your-sonarqube-server-url ^
-                      -Dsonar.login=${credentials('sonar-token')} ^
+                      -Dsonar.login=${SONAR_TOKEN} ^
                       -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                     """
                 }
@@ -51,7 +51,7 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 script {
-                    timeout(time: 5, unit: 'MINUTES') {  // Increased timeout
+                    timeout(time: 2, unit: 'MINUTES') {
                         def qg = waitForQualityGate()
                         if (qg.status != 'OK') {
                             error "❌ Quality Gate failed: ${qg.status}"
