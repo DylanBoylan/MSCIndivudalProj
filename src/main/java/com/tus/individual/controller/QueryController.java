@@ -107,7 +107,6 @@ public class QueryController {
     @GetMapping("/teams/points")
     public ResponseEntity<Map<String, Object>> getTotalPointsByTeam() {
         List<Object[]> results = queryControllerService.getTotalPointsByTeam();
-
         List<Map<String, Object>> teams = new ArrayList<>();
         for (Object[] result : results) {
             Map<String, Object> teamData = new HashMap<>();
