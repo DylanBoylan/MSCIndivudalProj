@@ -1,8 +1,5 @@
 package com.tus.individual.controller;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +23,6 @@ import com.tus.individual.service.IQueryControllerService;
 @RestController
 @RequestMapping("/api")
 public class QueryController {
-	private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private IQueryControllerService queryControllerService;
     
     @Autowired // Injected via constructor

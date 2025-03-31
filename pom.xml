@@ -22,7 +22,7 @@
         <!-- Sonar Qube Test -->
 	    <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 	    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-	    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	    <sonar.language>java</sonar.language>
     </properties>
 
@@ -200,18 +200,22 @@
 
             <!-- Run Unit & Integration Tests -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unit-tests</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <configuration>
+			        <argLine>-javaagent:${settings.localRepository}/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=${project.build.directory}/jacoco.exec</argLine>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>unit-tests</id>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>test</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+
 
             <!-- Run Selenium E2E Tests After Spring Boot Starts -->
             <plugin>
