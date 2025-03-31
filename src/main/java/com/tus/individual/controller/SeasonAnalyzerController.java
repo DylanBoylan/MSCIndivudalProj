@@ -44,7 +44,6 @@ public class SeasonAnalyzerController {
                 ? createSeasonAnalysisPrompt(teamName, gamesWon)
                 : createPlayerAnalysisPrompt(teamName, gamesWon);
 
-        System.out.println("📡 AI Prompt Sent: " + aiPrompt);
 
         String aiReport = openAiService.getTrainingPlan(aiPrompt);
 

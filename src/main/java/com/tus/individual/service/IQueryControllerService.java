@@ -1,11 +1,7 @@
 package com.tus.individual.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-
-import org.springframework.data.repository.query.Param;
 
 import com.tus.individual.model.Action;
 import com.tus.individual.model.Match;

@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.tus.individual.model.Action;
 import com.tus.individual.model.ActionId;
-import com.tus.individual.model.Match;
 
 @Repository
 public interface ActionRepository extends JpaRepository<Action, ActionId> {

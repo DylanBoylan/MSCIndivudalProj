@@ -5,9 +5,6 @@ import static org.mockito.Mockito.*;
 
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -19,13 +16,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Key;
 import java.util.Base64;
-import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class JwtServiceTest {

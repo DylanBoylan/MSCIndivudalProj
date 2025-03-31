@@ -1,13 +1,11 @@
 package com.tus.individual.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tus.individual.dto.UserLoginDto;
-import com.tus.individual.dto.UserLoginResponse;
 import com.tus.individual.exception.InvalidCredentialsException;
 import com.tus.individual.service.IAuthService;
 import com.tus.individual.service.IJwtService;

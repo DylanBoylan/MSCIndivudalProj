@@ -5,7 +5,6 @@ import static org.mockito.Mockito.*;
 
 import com.tus.individual.dao.*;
 import com.tus.individual.model.*;
-import com.tus.individual.service.IQueryControllerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

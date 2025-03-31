@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import com.tus.individual.service.IQueryControllerService;
 import com.tus.individual.service.impl.OpenAIService;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +30,6 @@ public class TrainingController {
             @RequestParam String teamName,
             @RequestParam String type) {
         
-        System.out.println("📡 Received request for training plan: Team=" + teamName + ", Type=" + type);
 
         // 1️⃣ Determine which stat to fetch
         Double efficiency;
@@ -62,12 +60,8 @@ public class TrainingController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Invalid training type"));
         }
 
-        // 2️⃣ Debug output
-        System.out.println("📊 " + statType + " for " + teamName + ": " + efficiency);
-
         // 3️⃣ If the stat is 0.0 and it's a technical skill (not Cardio/Strength), return an error
         if (efficiency == 0.0 && !type.equals("Cardio") && !type.equals("Strength Training")) {
-            System.out.println("❌ No stats found for " + type + "!");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "No stats found for this team in " + type));
         }
 
